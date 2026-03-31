@@ -1,10 +1,16 @@
-FROM node  
+FROM node
 
 ENV MONGO_DB_USERNAME=mongoadmin \
     MONGO_DB_PWD=secret
 
+# Set working directory inside the container
+WORKDIR /testapp
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
 RUN npm install
-RUN mkdir -p testapp
  
 COPY . /testapp
 
