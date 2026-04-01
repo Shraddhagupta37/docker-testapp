@@ -17,4 +17,4 @@ COPY . /testapp
 CMD ["node", "/testapp/server.js"]
 
 # To build the image, run the following command in the terminal:
-#docker build -t testappp:1.0 .
+#docker build -t testapp:1.0 .

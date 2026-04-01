@@ -7,18 +7,37 @@ const PORT = 5050;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const MONGO_URL = "mongodb://mongoadmin:secret@localhost:27017";
+const MONGO_URL = "mongodb://mongoadmin:secret@mongo:27017";
 const client = new MongoClient(MONGO_URL);
+
+let db;
+
+// Connect once at startup
+async function connectDB() {
+    while (true) {
+        try {
+            await client.connect();
+            console.log("Connected to MongoDB");
+            db = client.db("user");
+            break;
+        } catch (err) {
+            console.log("Mongo not ready, retrying in 2 sec...");
+            await new Promise(res => setTimeout(res, 2000));
+        }
+    }
+}
+
+connectDB();
 
 //GET all users
 app.get("/getUsers", async (req, res) => {
-    await client.connect(URL);
-    console.log('Connected successfully to server');
+    // await client.connect(MONGO_URL);
+    // console.log('Connected successfully to server');
 
-    const db = client.db("user");
+    // const db = client.db("user");
     const data = await db.collection('users').find({}).toArray();
 
-    client.close();
+    // client.close();
     res.send(data);
 });
 
@@ -26,14 +45,16 @@ app.get("/getUsers", async (req, res) => {
 app.post("/addUser", async (req, res) => {
     const userObj = req.body;
     console.log(req.body);
-    await client.connect(URL);
-    console.log('Connected successfully to server');
+    // await client.connect(MONGO_URL);
+    // console.log('Connected successfully to server');
 
-    const db = client.db("user");
+    // const db = client.db("user");
     const data = await db.collection('users').insertOne(userObj);
+    res.send("User added");
+
     console.log(data);
     console.log("data inserted in DB");
-    client.close();
+    // client.close();
 });
 
 
