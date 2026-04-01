@@ -31,13 +31,8 @@ connectDB();
 
 //GET all users
 app.get("/getUsers", async (req, res) => {
-    // await client.connect(MONGO_URL);
-    // console.log('Connected successfully to server');
-
-    // const db = client.db("user");
     const data = await db.collection('users').find({}).toArray();
 
-    // client.close();
     res.send(data);
 });
 
@@ -45,16 +40,12 @@ app.get("/getUsers", async (req, res) => {
 app.post("/addUser", async (req, res) => {
     const userObj = req.body;
     console.log(req.body);
-    // await client.connect(MONGO_URL);
-    // console.log('Connected successfully to server');
-
-    // const db = client.db("user");
+   
     const data = await db.collection('users').insertOne(userObj);
     res.send("User added");
 
     console.log(data);
     console.log("data inserted in DB");
-    // client.close();
 });
 
 
