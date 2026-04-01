@@ -30,3 +30,7 @@ services:
     depends_on:
       - mongo
     restart: always
+
+volumes:
+  mongo-data:   # Define a named volume for MongoDB data persistence
+  # - /disk/folderonpc:/data/db   # Alternatively, you can use a bind mount to a specific folder on your host machine for data persistence
