@@ -28,7 +28,7 @@ The application image is available on Docker Hub:
 
 Pull using:
 ```
-docker pull shraddha246850/docker-testapp:1.0
+docker pull shraddha246850/docker-testapp:latest
 ```
 ---
 
