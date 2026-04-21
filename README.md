@@ -34,38 +34,59 @@ docker pull shraddha246850/docker-testapp:latest
 
 ## ⚙️ Prerequisites
 
-Make sure you have installed:
-- Docker
-- Docker Compose
+Make sure Docker is installed and running.
 
+---
 
 ## ▶️ How to Run the Project
 
-🔹 Option 1: Run Full System (Recommended)
+### 🔹 Option 1: Run Without Docker Compose (Easy - Recommended for Evaluation)
+
+#### Step 1: Run MongoDB
+```
+docker run -d -p 27017:27017 --name mongo \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+-e MONGO_INITDB_ROOT_PASSWORD=secret \
+mongo
+```
+
+#### Step 2: Run Mongo Express
+```
+docker run -d -p 8081:8081 --name mongo-express \
+--link mongo \
+-e ME_CONFIG_MONGODB_ADMINUSERNAME=mongoadmin \
+-e ME_CONFIG_MONGODB_ADMINPASSWORD=secret \
+-e ME_CONFIG_MONGODB_SERVER=mongo \
+mongo-express
+```
+
+#### Step 3: Run Application
+```
+docker run -d -p 5050:5050 --name testapp \
+--link mongo \
+shraddha246850/docker-testapp:latest
+```
+
+### 🔹 Option 2: Run Using Docker Compose (Full Setup)
+
+Clone/form this repository and open it in terminal and run the following command:
 ```
 docker compose up -d
 ```
 
 This will:
-Start all services (app + database + UI)
-Automatically create network between containers
-
-
-🔹 Option 2: Run Only Application Image
-```
-docker run -d -p 5050:5050 shraddha246850/testapp:1.0
-```
+- Start all services (app + database + UI)
+- Automatically create network between containers
 
 ---
 
 ## 🌐 Access the Application
 
-Service	URL
-Application	http://localhost:5050
-
-Mongo Express	http://localhost:8081
-
-MongoDB	Port 27017
+| Service       | URL                                            |
+| ------------- | ---------------------------------------------- |
+| Application   | [http://localhost:5050](http://localhost:5050) |
+| Mongo Express | [http://localhost:8081](http://localhost:8081) |
+| MongoDB       | Port 27017                                     |
 
 ---
 
@@ -76,3 +97,7 @@ MongoDB	Port 27017
 - Multi-container application setup
 - Container networking
 
+---
+
+## 👩‍💻 Author
+Shraddha Gupta
