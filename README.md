@@ -50,6 +50,7 @@ This will:
 Start all services (app + database + UI)
 Automatically create network between containers
 
+
 🔹 Option 2: Run Only Application Image
 ```
 docker run -d -p 5050:5050 shraddha246850/testapp:1.0
@@ -65,3 +66,13 @@ Application	http://localhost:5050
 Mongo Express	http://localhost:8081
 
 MongoDB	Port 27017
+
+---
+
+## 🎯 Learning Outcomes
+
+- Understanding Docker images and containers
+- Working with Docker Compose
+- Multi-container application setup
+- Container networking
+
