@@ -26,7 +26,7 @@ The application image is available on Docker Hub:
 
 👉 https://hub.docker.com/repository/docker/shraddha246850/docker-testapp/
 
-Pull using:
+Pull the image:
 ```
 docker pull shraddha246850/docker-testapp:latest
 ```
@@ -40,7 +40,7 @@ Make sure Docker is installed and running.
 
 ## ▶️ How to Run the Project
 
-### 🔹 Option 1: Run Without Docker Compose (Easy - Recommended for Evaluation)
+### 🔹 Option 1: Run Without Docker Compose (Easy - Recommended)
 
 #### Step 1: Run MongoDB
 ```
@@ -66,6 +66,7 @@ docker run -d -p 5050:5050 --name testapp \
 --link mongo \
 shraddha246850/docker-testapp:latest
 ```
+
 
 ### 🔹 Option 2: Run Using Docker Compose (Full Setup)
 
