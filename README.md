@@ -1,4 +1,4 @@
-# 🚀 Docker TestApp (DevOps Project)
+# Docker TestApp (DevOps Project)
 
 ## 📌 Overview
 This project is a containerized full-stack application built using Docker and Docker Compose.  
@@ -24,11 +24,11 @@ Services:
 ## 🐳 Docker Hub Image
 The application image is available on Docker Hub:
 
-👉 https://hub.docker.com/repository/docker/shraddha246850/testapp/
+👉 https://hub.docker.com/repository/docker/shraddha246850/docker-testapp/
 
 Pull using:
 ```
-docker pull shraddha246850/testapp:1.0
+docker pull shraddha246850/docker-testapp:1.0
 ```
 ---
 
