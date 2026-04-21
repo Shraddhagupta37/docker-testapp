@@ -70,7 +70,7 @@ shraddha246850/docker-testapp:latest
 
 ### 🔹 Option 2: Run Using Docker Compose (Full Setup)
 
-Clone/form this repository and open it in terminal and run the following command:
+Clone/fork this repository and open it in terminal and run the following command:
 ```
 docker compose up -d
 ```
